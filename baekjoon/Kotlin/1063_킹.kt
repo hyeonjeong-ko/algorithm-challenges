@@ -34,11 +34,14 @@ import java.io.InputStreamReader
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
 
-    val (kingPos,stonePos,N) = br.readLine().split(" ")
+    val (kingPos, stonePos, N) = br.readLine().split(" ")
+    val moveCount = N.toInt()
 
+    // 초기 위치 설정
     var (kingRow, kingCol) = toPos(kingPos)
     var (stoneRow, stoneCol) = toPos(stonePos)
 
+    // 방향 맵핑 설정
     val directions = mapOf(
         "R" to Pair(0, 1),
         "L" to Pair(0, -1),
@@ -50,29 +53,28 @@ fun main() {
         "LB" to Pair(-1, -1)
     )
 
-    repeat(N.toInt()) {
-            val move = br.readLine()
-            val (dx,dy) = directions[move]!!
+    repeat(moveCount) {
+        val move = br.readLine()
+        val (dx, dy) = directions[move]!!
 
-            val newKingRow = kingRow + dx
-            val newKingCol = kingCol + dy
+        val newKingRow = kingRow + dx
+        val newKingCol = kingCol + dy
 
-            if (isValidPosition(newKingRow,newKingCol)) { // 체스판 범위 체크
-                // 돌이 범위내인지 확인
-                if (newKingRow == stoneRow && newKingCol == stoneCol) {
-                    val newStoneRow = stoneRow + dx
-                    val newStoneCol = stoneRow + dy
-
-                    // 돌의 이동이 유효한 범위 내에 있는지 확인
-                    if (isValidPosition(newStoneRow, newStoneCol)) {
-                        stoneRow = newStoneRow
-                        stoneCol = newStoneCol
-                        kingRow = newKingRow
-                        kingCol = newKingCol
-                } else {
+        // 체스판 범위 체크
+        if (isValidPosition(newKingRow, newKingCol)) {
+            if (newKingRow == stoneRow && newKingCol == stoneCol) {
+                val newStoneRow = stoneRow + dx
+                val newStoneCol = stoneCol + dy
+              
+                if (isValidPosition(newStoneRow, newStoneCol)) { //돌 범위체크
+                    stoneRow = newStoneRow
+                    stoneCol = newStoneCol
                     kingRow = newKingRow
                     kingCol = newKingCol
                 }
+            } else {
+                kingRow = newKingRow
+                kingCol = newKingCol
             }
         }
     }
@@ -80,10 +82,10 @@ fun main() {
     println(toAB(stoneRow, stoneCol))
 }
 
-fun toPos(position: String): Pair<Int,Int> {
+fun toPos(position: String): Pair<Int, Int> {
     val row = position[1] - '0'
     val col = position[0] - 'A' + 1
-    return Pair(row,col)
+    return Pair(row, col)
 }
 
 fun toAB(row: Int, col: Int): String {
