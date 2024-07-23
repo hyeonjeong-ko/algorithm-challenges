@@ -1,4 +1,4 @@
-"""
+/*
 A Solution to Product of Array Except Self Problem
 
 Metadata:
@@ -23,7 +23,7 @@ Implementation:
   1. Left Products: Traverse the list from left to right, calculating the product of all elements to the left of each index.
   2. Right Products: Traverse the list from right to left, updating the result by multiplying the product of elements to the right of each index.
   3. Result Combination: The final list is the product of left and right products for each index.
-"""
+*/
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
