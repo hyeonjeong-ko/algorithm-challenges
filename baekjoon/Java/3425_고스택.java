@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Main {
+public class PS_01 {
 
 	public static void main(String[] args) throws IOException {
 		
@@ -51,29 +51,40 @@ public class Main {
 				long x = Long.parseLong(op.split(" ")[1]);
 				st.push(x);
 			} else if (op.startsWith("POP")) {
+				if (st.isEmpty()) return "ERROR";
 				st.pop();
 			} else if (op.startsWith("INV")) {
+				if (st.isEmpty()) return "ERROR";
 				st.push(-st.pop());
 			} else if (op.startsWith("DUP")) {
 				st.push(st.peek());
 			} else if (op.startsWith("SWP")) {
+				if (st.size() < 2) return "ERROR";
 				long first = st.pop();
 				long second = st.pop();
 				st.push(first);
 				st.push(second);
 			} else if (op.startsWith("ADD")) {
+				if (st.size() < 2) return "ERROR";
+
 				long first = st.pop();
 				long second = st.pop();
 				st.push(first + second);
 			} else if (op.startsWith("SUB")) {
+				if (st.size() < 2) return "ERROR";
+
 				long first = st.pop();
 				long second = st.pop();
 				st.push(first - second);
 			} else if (op.startsWith("MUL")) {
+				if (st.size() < 2) return "ERROR";
+
 				long first = st.pop();
 				long second = st.pop();
 				st.push(first*second);
 			} else if (op.startsWith("DIV")) {
+				if (st.size() < 2) return "ERROR";
+
 				long first = st.pop();
 				long second = st.pop();
 				if (first == 0) return "ERROR"; // 0으로 나눴으면 에러
@@ -84,6 +95,8 @@ public class Main {
 				if ((first < 0) ^ (second < 0)) result = -result;
 				st.push(result);
 			} else if (op.startsWith("MOD")) {
+				if (st.size() < 2) return "ERROR";
+
 				long first = st.pop();
 				long second = st.pop();
 				if (first == 0) return "ERROR"; // 0으로 나눴으면 에러
@@ -91,16 +104,11 @@ public class Main {
 				//  나머지의 부호는 피제수의 부호와 같다.
 				if (second < 0) result = -result;
 				st.push(result);
-				
 			}
-			
 		}
 		if (!(st.size() != 1)) { // 스택에 저장되어 있는 숫자 1 X
 			return "ERROR";
 		}
-        if (st.isEmpty()) {
-            return "ERROR";
-        }
 		
 		return  String.valueOf(st.pop());
 		
