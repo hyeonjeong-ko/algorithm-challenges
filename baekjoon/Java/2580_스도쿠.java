@@ -20,6 +20,10 @@ Analysis
     - Check the current row for duplicates
     - Check the current column for duplicates
     - Check the 3x3 subgrid for duplicates
+
+    주의!
+    * 재귀 호출이 성공했는지 여부를 확인하지않고 다음 숫자들을 모두 시도하는것은 불필요하다.
+    * (올바른 해를 찾았는데도 백트래킹이 계속되면 안된다. 백트래킹 후 경로를 찾으면 종료한다.)
 */
 
 import java.io.BufferedReader;
