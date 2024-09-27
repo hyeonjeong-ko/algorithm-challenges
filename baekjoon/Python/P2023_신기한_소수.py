@@ -1,37 +1,26 @@
 # bfs
-import java.util.Scanner;
+import sys
+sys.setrecursionlimit(10000)
+input = sys.stdin.readline
 
-public class P2023 {
-	static int N;
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();
+N = int(input())
 
-		dfs(2,1);
-		dfs(3,1);
-		dfs(5,1);
-		dfs(7,1);
-	}
-	public static void dfs(int number, int depth) {
-		if (depth == N) {
-			if (isPrime(number)) {
-				System.out.println(number);
-				return;
-			}
-		}
-		for (int i = 1; i < 10; i++) {
-			if (i % 2 == 0) {continue;}
-			if (isPrime(number * 10 + i)) {
-				dfs(number * 10 + i, depth + 1);
-			}
-		}
-	}
-	static boolean isPrime(int number) {
-		for (int i = 2; i <= number / 2; i++) {
-			if (number % i == 0) {
-				return false;
-			}
-		}
-		return true;
-	}
-}
+def isPrime(num):
+    for i in range(2, int(num / 2 + 1)):
+        if num % i == 0:
+            return False
+    return True
+
+def dfs(number):
+    if len(str(number)) == N:
+        print(number)
+    else:
+        for i in range(1, 10): # 2,3,5,7 소수 탐색
+            if i % 2 == 0: # 짝수 탐색X
+                continue
+            if isPrime(number * 10 + i): # 자릿수 늘리기
+                dfs(number * 10 + i)
+dfs(2)
+dfs(3)
+dfs(5)
+dfs(7)
