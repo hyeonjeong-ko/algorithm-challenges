@@ -22,6 +22,7 @@ class Solution {
             }
         }
         // 실패율이 높은 스테이지부터 내림차순 정렬
-        return fails.entrySet().stream().sorted((o1,o2) -> Double.compare(o2.getValue(),o1.getValue())).mapToInt(HashMap.Entry::getKey).toArray();
+        return fails.entrySet().stream().sorted((o1,o2) -> Double.compare(o2.getValue(),o1.getValue()))
+            .mapToInt(HashMap.Entry::getKey).toArray();
     }
 }
