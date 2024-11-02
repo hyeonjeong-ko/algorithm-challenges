@@ -1,3 +1,4 @@
+# stack
 def solution(s):
     st = []
     for c in s:
