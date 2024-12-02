@@ -1,3 +1,5 @@
+# simul, bfs
+
 from collections import Counter
 
 
