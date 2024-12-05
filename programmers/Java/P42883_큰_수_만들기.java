@@ -1,4 +1,7 @@
 /*
+문제:
+https://school.programmers.co.kr/learn/courses/30/lessons/42883?language=java
+
 그리디: 큰 숫자를 앞자리에 배치해 가장 큰 숫자 만들기
 단조 감조 스택: 스택 숫자가 내림차순을 유지하도록 작은 숫자 제거
 시간 복잡도: O(n)
