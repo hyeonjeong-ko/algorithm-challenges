@@ -1,39 +1,22 @@
-import java.util.*;
+# Simul
 
-class Solution {
-    public int[] solution(String[] enroll, String[] referral, String[] seller, int[] amount) {
-        int[] answer = new int[enroll.length];
+def solution(enroll, referral, seller, amount):
+    answer = []
+    
+    # enroll : referral
+    parent = dict(zip(enroll,referral))    
+    total = {name: 0 for name in enroll}
+    
+    for i in range(len(seller)):
+        money = amount[i] * 100 # 판매 이익
+        cur_name = seller[i]
         
-        // enroll : referral
-        Map<String, String> parent = new HashMap<>();
-        for (int i = 0; i < enroll.length; i++) {
-            parent.put(enroll[i], referral[i]);
-        }
-        
-        // 각 회원별 수익
-        Map<String, Integer> total = new HashMap<>();
-        for (String name : enroll)
-            total.put(name, 0);
-        
-        // 판매자별 이익 분배
-        for (int i = 0; i < seller.length; i++) {
-            int money = amount[i] * 100; // 판매 이익
-            String curName = seller[i];
-            
-            // 상위 노드로 이익 분배
-            while (money > 0 && !curName.equals("-")) {
-                int distributed = money / 10;
-                int remaining = money - distributed;
-                
-                total.put(curName, total.get(curName) + remaining);
-                money = distributed;
-                curName = parent.getOrDefault(curName, "-");
-            }
-        }
-        
-        // 결과 배열에 매핑
-        for (int i = 0; i < enroll.length; i++)
-            answer[i] = total.get(enroll[i]);
-        return answer;
-    }
-}
+        # 차례대로 상위 노드로 이동하며 이익 분배
+        while money > 0 and cur_name != "-":
+            # 판매자가 받을 금액 계산
+            total[cur_name] += money - money//10
+            money//=10
+            cur_name=parent[cur_name]
+    return [total[name] for name in enroll]
+    
+    return answer
