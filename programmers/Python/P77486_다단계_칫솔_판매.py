@@ -1,4 +1,5 @@
 # Simul
+# https://school.programmers.co.kr/learn/courses/30/lessons/77486?language=python3
 
 def solution(enroll, referral, seller, amount):
     answer = []
