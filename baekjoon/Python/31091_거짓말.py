@@ -1,3 +1,6 @@
+# 이분탐색 / 누적합
+# 문제핵심: N^2 시간초과 -> nlogn
+
 import sys, bisect
 input = sys.stdin.readline
 
