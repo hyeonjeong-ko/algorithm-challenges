@@ -1,3 +1,5 @@
+// 실패문제ㅠ
+// 하나로 기준잡고 해결
 class Solution {
     public boolean notDivisible(int[] arr, int num){
         for(int n : arr)
