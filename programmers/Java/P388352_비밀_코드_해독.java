@@ -49,9 +49,7 @@ public class 비밀_코드_해독 {
             result.add(new HashSet<>(current));
             return;
         }
-        // 남은 숫자가 부족하지 않도록 i의 최댓값 계산
-        int max = n - (r - current.size()) + 1;
-        for (int i = start; i <= max; i++) {
+        for (int i = start; i <= n; i++) {
             current.add(i);
             combination(i + 1, n, r, current, result);
             current.remove(current.size() - 1);  // 백트래킹
@@ -79,3 +77,4 @@ public class 비밀_코드_해독 {
         return true;
     }
 }
+
