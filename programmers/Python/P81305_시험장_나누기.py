@@ -43,11 +43,11 @@ def dfs(node):
         return Num[node] + min(ls, rs)
     #   b) 왼쪽만 합치는 게 가능하다면
     if ls + Num[node] <= limit:
-        cnt += 1
+        cnt += 1 # 오른쪽 자르기
         return ls + Num[node]
     #   c) 오른쪽만 합치는 게 가능하다면
     if rs + Num[node] <= limit:
-        cnt += 1
+        cnt += 1 # 왼쪽 자르기
         return rs + Num[node]
     #   d) 둘 다 합칠 수 없으면 둘 다 잘라내야 함
     cnt += 2
