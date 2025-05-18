@@ -24,7 +24,7 @@ def dfs(node):
     # 1) 자신만으로도 limit 초과 → 무조건 잘라야 함
     if Num[node] > limit:
         cnt = MAX_N + 1
-        return Num[node]
+        return Num[node] # 어떤값 반환해도 상관X
     # 2) 자식 서브트리 합 재귀 호출
     ls = dfs(child[node][0])
     rs = dfs(child[node][1])
