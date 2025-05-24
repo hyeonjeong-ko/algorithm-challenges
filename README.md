@@ -12,7 +12,7 @@
 ├── SWEA/                   # Samsung SW Expert Academy 문제 풀이
 ├── baekjoon/              # BOJ(백준) 문제 풀이
 ├── codetree/              # CodeTree 문제 풀이
-├── coding-test-success/   # 취업 코딩테스트 기출 모음
+├── coding-test-success/   # 코딩테스트 합격자 되기 예제
 ├── doit/ch08/             # “Do it! Java” 챕터별 예제
 ├── leetcode/               # LeetCode 문제 풀이
 └── programmers/           # 프로그래머스 문제 풀이
