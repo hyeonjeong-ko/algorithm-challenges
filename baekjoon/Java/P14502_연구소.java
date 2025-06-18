@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+// algo: bfs, combi
 // 유의할것: comb, Arrays.copyOf(arr[], length)
 
 public class P14502_연구소 {
